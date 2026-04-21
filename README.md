@@ -1,5 +1,9 @@
 # REQUIEM, Project Documentation
 
+[![npm](https://img.shields.io/npm/v/@ujjwalvivek/requiem?style=for-the-badge&color=95c85a)](https://www.npmjs.com/package/@ujjwalvivek/requiem)
+[![GitHub release](https://img.shields.io/github/v/release/ujjwalvivek/requiem?style=for-the-badge&color=7fc4b8)](https://github.com/ujjwalvivek/requiem/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT?style=for-the-badge&color=fa983a)](LICENSE)
+
 > A stark, minimalist bullet heaven built on the Journey Engine.  
 > Fewer, faster, deadlier enemies. Monochrome geometry. Heavy impact. Zero assets.
 

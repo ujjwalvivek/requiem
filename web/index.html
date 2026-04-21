@@ -159,10 +159,18 @@
   </div>
   <script type="module">
     const LOCAL = './pkg/requiem.js';
+    const CDN   = 'https://cdn.jsdelivr.net/npm/@ujjwalvivek/requiem@latest/requiem.js';
     const status = document.getElementById('loader-status');
     try {
       status.textContent = 'loading wasm…';
-      const mod = await import(LOCAL);
+      let mod;
+      try {
+        const probe = await fetch(LOCAL, { method: 'HEAD' });
+        if (!probe.ok) throw 0;
+        mod = await import(LOCAL);
+      } catch {
+        mod = await import(CDN);
+      }
       status.textContent = 'starting engine…';
       await mod.default();
       const loader = document.getElementById('loader');
