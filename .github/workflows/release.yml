@@ -61,9 +61,6 @@ jobs:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Upgrade npm for OIDC support
-        run: npm install -g npm@latest
-
       - name: Publish to npm
         working-directory: web/pkg
         run: npm publish --provenance --access public
