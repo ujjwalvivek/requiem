@@ -4,6 +4,7 @@ version = "1.0.0"
 edition = "2024"
 description = "REQUIEM: A brutal, minimalist bullet heaven. A WASM Artifact."
 license = "MIT"
+repository = "https://github.com/ujjwalvivek/requiem"
 
 [lib]
 name = "requiem"

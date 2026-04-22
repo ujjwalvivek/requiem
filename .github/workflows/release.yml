@@ -42,6 +42,8 @@ jobs:
         run: |
           npm pkg set name="@ujjwalvivek/requiem"
           npm pkg set version="${GITHUB_REF#refs/tags/v}"
+          npm pkg set repository.type="git"
+          npm pkg set repository.url="git+https://github.com/ujjwalvivek/requiem.git"
 
       - name: Get version
         id: ver
@@ -58,23 +60,17 @@ jobs:
       - name: Setup Node (npm)
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Prepare npm auth for OIDC trusted publishing
-        run: |
-          if [ -n "$NPM_CONFIG_USERCONFIG" ] && [ -f "$NPM_CONFIG_USERCONFIG" ]; then
-            sed -i '/_authToken/d' "$NPM_CONFIG_USERCONFIG"
-          fi
 
       - name: Publish to npm
         working-directory: web/pkg
-        run: npm publish --provenance --access public
+        run: npm publish --access public
 
       - name: Setup Node (GitHub Packages)
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
           registry-url: 'https://npm.pkg.github.com'
 
       - name: Publish to GitHub Packages
