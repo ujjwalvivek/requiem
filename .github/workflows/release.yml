@@ -61,8 +61,11 @@ jobs:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Remove token from npmrc (use OIDC instead)
-        run: sed -i '/_authToken/d' ~/.npmrc
+      - name: Prepare npm auth for OIDC trusted publishing
+        run: |
+          if [ -n "$NPM_CONFIG_USERCONFIG" ] && [ -f "$NPM_CONFIG_USERCONFIG" ]; then
+            sed -i '/_authToken/d' "$NPM_CONFIG_USERCONFIG"
+          fi
 
       - name: Publish to npm
         working-directory: web/pkg
